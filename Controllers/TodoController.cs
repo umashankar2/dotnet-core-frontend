@@ -29,7 +29,16 @@ namespace TodoApi.Controllers
                 _context.TodoItems.Add(new TodoItem { Name = "Item1" });
                 _context.SaveChanges();
             }
+
         }
+        public override void OnActionExecuting(ActionExecutingContext context)
+            {
+                base.OnActionExecuting(context);
+
+                _client.DefaultRequestHeaders.Accept.Clear();
+                _client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]);
+            }
 
         // GET: api/Todo
         [HttpGet]
