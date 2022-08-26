@@ -31,14 +31,7 @@ namespace TodoApi.Controllers
             }
 
         }
-        public override void OnActionExecuting(ActionExecutingContext context)
-            {
-                base.OnActionExecuting(context);
-
-                _client.DefaultRequestHeaders.Accept.Clear();
-                _client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]);
-            }
+    
 
         // GET: api/Todo
         [HttpGet]
