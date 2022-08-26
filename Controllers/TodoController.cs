@@ -11,13 +11,13 @@ using TodoApi.Models;
 
 namespace TodoApi.Controllers
 {
-    private static readonly HttpClient _client = new HttpClient();
-    private static readonly string _remoteUrl = "https://lodotnetapi.azurewebsites.net";
 
     [Route("api/[controller]")] 
     [ApiController]
     public class TodoController : Controller
     {
+            private static readonly HttpClient _client = new HttpClient();
+            private static readonly string _remoteUrl = "https://lodotnetapi.azurewebsites.net";
         private readonly TodoContext _context;
 
         public TodoController(TodoContext context)
